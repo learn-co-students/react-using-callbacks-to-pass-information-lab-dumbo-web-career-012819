@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ColorSelector from './ColorSelector';
 
 export default class Cell extends Component {
   
@@ -8,10 +9,15 @@ export default class Cell extends Component {
       color: this.props.color
     }
   }
-  
+  handleClick = () => {
+    const newColor = this.props.getColor()
+    this.setState({
+      color: newColor
+    })
+  }
   render() {
     return (
-      <div className="cell" style={{backgroundColor: this.state.color}}>
+      <div className="cell" onClick={this.handleClick} style={{backgroundColor: this.state.color}}>
       </div>
     )
   }
